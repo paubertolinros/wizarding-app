@@ -9,12 +9,16 @@ const HomeDetailPage = () => {
   const { houseId } = useParams();
 
   const fetchData = async () => {
+    try {
     const result = await axios.get(`https://wizard-world-api.herokuapp.com/houses/${houseId}`)
     if (result) {
       setHouse(result.data)
       console.log(result.data)
     } else {
       setError(true)
+      };
+    } catch (error){
+      console.error(error)
     };
   };
 

@@ -8,11 +8,15 @@ const HomePage = () => {
   const [error, setError] = useState(false);
 
   const fetchData = async () => {
+    try {
     const result = await axios.get('https://wizard-world-api.herokuapp.com/houses')
     if (result) {
       setHouses(result.data)
     } else {
       setError(true)
+      };
+    } catch (error) {
+      console.error(error)
     };
   };
 
